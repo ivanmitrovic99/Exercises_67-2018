@@ -5,3 +5,4 @@ CREATE TABLE [dbo].[ExerciseResults] (
     [Points]       INT            NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+ 
