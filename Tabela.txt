@@ -1,8 +1,8 @@
 CREATE TABLE [dbo].[ExerciseResults] (
     [Id]           INT            NOT NULL,
-    [StudentName]  NVARCHAR (100) NULL,
-    [StudentIndex] NVARCHAR (20)  NULL,
-    [Points]       INT            NULL,
+    [StudentName]  NVARCHAR (100) NOT NULL,
+    [StudentIndex] NVARCHAR (20)  NOT NULL,
+    [Points]       INT            NOT NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
  
