@@ -15,12 +15,16 @@ namespace Exercises_67_2018
 
 
 
-        public ExerciseResults(int id, string stundentName, int points, string indexNumber)
+        public ExerciseResults(int id, string stundentName, string indexNumber, int points)
         {
             Id = id;
             StundentName = stundentName;
             Points = points;
             IndexNumber = indexNumber;
+        }
+
+        public ExerciseResults()
+        {
         }
     }
     
