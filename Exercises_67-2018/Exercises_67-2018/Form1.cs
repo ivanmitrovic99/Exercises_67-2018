@@ -19,10 +19,15 @@ namespace Exercises_67_2018
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        
+        
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
             List<ExerciseResults> rezultati = new List<ExerciseResults>();
 
             string ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=FacultyDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
@@ -51,11 +56,6 @@ namespace Exercises_67_2018
                 listBox1.Items.Add(r.StundentName + "  | " +
 r.IndexNumber + " |  " + r.Points);
             }
-        }
-        
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
