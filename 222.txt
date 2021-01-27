@@ -1,0 +1,239 @@
+$("#dugme").click(function () {
+  fetch('https://jsonplaceholder.typicode.com/albums/1/photos')
+      .then((response) => {
+          return response.json();
+      })
+      .then((myJson) => {
+          console.log(myJson);
+          var tableData = "";
+          var todoTable = document.getElementById("gallery");
+          $.each(myJson, function(index, todoItem){
+          tableData += '<div class="card" style="width: 18rem;">' + '<img class="card-img-top" src="'+ todoItem.url + '" alt="Card image cap">' + 
+          '<div class="card-body">' + '<h5 class="card-title">'+ todoItem.title + '</h5>' + '<p class="card-text">' + todoItem.thumbnailurl + '</p>' + 
+          '</div>' + '</div>';
+          });
+          gallery.innerHTML = tableData;
+      });
+});
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////
+
+
+$("#dugme").click(function(){
+fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+.then((myJson) => {
+    var data="";
+    var gallery = document.getElementById("tabledata");
+    $.each(myJson, function(index, itemdata)
+    {
+        $("tbody").append('<tr>' + '<th scope="row">' + itemdata.id + '</th>' + '<td>' + '<button id="dugme" type="button" class="btn btn-' + boja(itemdata.id) + '">klik za prikaz</button>' + '</td>' + '<td>' + itemdata.username + '</td>' ) });
+    
+
+});
+
+
+});
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////
+
+
+
+function boja(id){
+var crvena ="danger";
+var zelena = "success";
+    if(id%2==0)
+    return crvena;
+    else return zelena;
+
+
+}
+
+
+
+$("#dugme").click(function(){
+
+    fetch('https://jsonplaceholder.typicode.com/albums/1/photos')
+    .then(response => response.json())
+    .then((myJson) =>
+    {
+        var od1=document.getElementById("od").value;
+        var do1=document.getElementById("do").value;
+        var slike = "";
+var galerija=document.getElementById("galerija");
+$.each(myJson, function(index, slika){
+
+    slike +=   '<img src="'+ slika.url + '" width="150px" >' + '<button type="button" class="btn btn-'+ od1 + '">Primary</button>';
+
+    });
+    galerija.innerHTML = slike;  
+});
+
+});
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+function boja(id){
+var crvena ="danger";
+var zelena = "success";
+    if(id%2==0)
+    return crvena;
+    else return zelena;
+
+
+}
+
+
+
+$("#dugme").click(function(){
+
+    fetch('https://jsonplaceholder.typicode.com/albums/1/photos')
+    .then(response => response.json())
+    .then((myJson) =>
+    {
+        var od1=document.getElementById("od").value;
+        var do1=document.getElementById("do").value;
+        var slike = "";
+var galerija=document.getElementById("galerija");
+$.each(myJson, function(index, slika){
+
+    slike +=   '<img src="'+ slika.url + '" width="150px" >' + '<button type="button" class="btn btn-'+ od1 + '">Primary</button>';
+
+    });
+    galerija.innerHTML = slike;  
+});
+
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+$("#dugme").click(function(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then((myJson) => {
+
+    var od1=document.getElementById("od").value;
+    
+    $.each(myJson, function(index, itemdata){
+if(od1 == itemdata.id){
+
+
+    $("#email").val(itemdata.email)
+}
+
+    
+    });
+    a = document.getElementById("od").value;
+
+    if(a>10 || a<0 || a=="")
+    $("#email").val("Nije pronadjen korisnik")
+
+  });
+});
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+$(document).ready(function () {
+    fetch('https://api.myjson.com/bins/yw3n2')
+        .then((response) => {
+            return response.json();
+        })
+        .then((myJson) => {
+            console.log(myJson);
+            var tableData = "";
+            var nbaTable = document.getElementById("nbaTable");
+            $.each(myJson.teams, function(index, nbaTeam){
+            tableData += '<div class="col col-sm-6 col-sm-4 col-lg-4">' +
+        '<div class="card">' +
+                '<img src="' + nbaTeam.logo + '" class="card-img-top" alt="...">' +
+                '<div class="card-body">' +
+                '<h3 class="card-title">' + nbaTeam.name + '</h3>' +
+                '<h5>Results</h5>' +
+                '<ul>' +
+                '<li>Won: ' + nbaTeam.results.wins + '</li>' +
+                '<li>Lost: ' + nbaTeam.results.losses + '</li>' +
+                '<li>Win%: ' + nbaTeam.results.winpercent + '</li>' +
+                '<li>Games Behind: ' + nbaTeam.results.gamesbehind + '</li>' +
+                '<li>Conference record: ' + nbaTeam.results.conferencerecord + '</li>' +
+                '<li>Division record: ' + nbaTeam.results.divisionrecord + '</li>' +
+                '<li>Home record: ' + nbaTeam.results.homerecord + '</li>' +
+                '<li>Away record: ' + nbaTeam.results.awayrecord + '</li>' +
+                '<li>Last 10: ' + nbaTeam.results.lastten + '</li>' +
+                '<li>Streak: ' + nbaTeam.results.streak + '</li>' +
+                '</ul>' +
+                '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>' +
+                '<div class="text-center"><a href="#" class="btn btn-' + streakClass(nbaTeam.results.streak)  + '">See details</a></div>' +
+            '</div></div></div>';
+            });
+            nbaTable.innerHTML = tableData;
+        });
+});
+
+function streakClass(winStreak) {
+    return winStreak[0] == 'W'? "success" : "danger";
+}
+
+/////////////////////////////////////////////////////////////////////
+
+
+$(document).ready(function () {
+    // pročitamo vrednosti u input poljima i parsiramo ih kao brojeve
+    var fromAlbumItem = parseInt($("#fromAlbumItem").val());
+    var toAlbumItem = parseInt($("#toAlbumItem").val());
+    // Pozovemo funkciju koja ispisuje kartice sa odgovarajućim podacima (albumi "od" - "do")
+    RetreiveData(fromAlbumItem, toAlbumItem);
+
+    $("#showAlbumInRange").click(function(){
+        // Kada se klikne na taster, potrebno je ponovo pročitati brojeve iz input polja
+        // Može se realizovati i drugačije, korišćenjem .change() metode, addEventListener(), itd.
+        fromAlbumItem = parseInt($("#fromAlbumItem").val());
+        toAlbumItem = parseInt($("#toAlbumItem").val());
+        RetreiveData(fromAlbumItem, toAlbumItem);
+    });
+});
+
+// Funkcija za ispis kartica/albuma - pošto se poziva pri učitavanju strane i klikom na taster
+// pogodnije je napraviti posebnu funkciju nego dva puta ponavljati isti kod
+// Parametri funkcije predstavljaju opseg albuma koji se prikazuju (ne uključujući "toItem" album)
+function RetreiveData(fromItem, toItem) {
+    fetch('https://jsonplaceholder.typicode.com/albums/1/photos')
+        .then((response) => {
+            return response.json();
+        })
+        .then((albumItems) => {
+            var tableData = "";
+            var todoTable = document.getElementById("todoTable");
+            for(var i = fromItem; i < toItem; i++) {
+                tableData += '<div class="col col-sm-6 col-sm-4 col-lg-3">' +
+                    '<div class="card mb-3">' +
+                    '<a class="d-block w-100" href="' + albumItems[i].url + '"><img src="' + albumItems[i].thumbnailUrl + '" class="card-img-top" alt="..."></a>' +
+                    '<div class="card-body">' +
+                    '<h3>Album Id: ' + albumItems[i].albumId + '</h3>' +
+                    '<h5>Photo Id: ' + albumItems[i].id + '</h5>' +
+                    '<p class="card-text">' + albumItems[i].title + '</p>' + '</div>' +
+                    '</div></div>';
+            }
+            todoTable.innerHTML = tableData;
+        });
+}
+
+
+
